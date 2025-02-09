@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/add}" th:object="${ct}">
+  <label>Code</label>
+  <input type="text" th:field="*{categoryCode}"/><br/>
+  <label>Name</label>
+  <input type="text" th:field="*{categoryName}"/><br/>
+  <button type="submit">Add</button>
+</form>
+<table>
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Code</td>
+    <td>Name</td>
+    <td>Action</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="ct : ${listCT}">
+    <td th:text="${ct.id}"></td>
+    <td th:text="${ct.categoryCode}"></td>
+    <td th:text="${ct.categoryName}"></td>
+    <td>
+      <a th:href="@{/remove/{id}(id=${ct.id})}">Remove</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
